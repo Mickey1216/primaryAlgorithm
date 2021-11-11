@@ -14,7 +14,7 @@
 链表中每个节点的值都是唯一的
 需要删除的节点 node 是 链表中的一个有效节点 ，且 不是末尾节点
  */
-//Definition for singly-linked list.
+//节点
 var ListNode = /** @class */ (function () {
     function ListNode(val, next) {
         this.val = (val === undefined ? 0 : val);
@@ -22,7 +22,25 @@ var ListNode = /** @class */ (function () {
     }
     return ListNode;
 }());
-//Do not return anything, modify it in-place instead.
+//删除给定节点
 function deleteNode(root) {
+    root.val = root.next.val;
+    root.next = root.next.next;
 }
-;
+//测试
+var node4 = new ListNode(4, null);
+var node3 = new ListNode(3, node4);
+var node2 = new ListNode(2, node3);
+var node1 = new ListNode(1, node2);
+var show = function (startNode) {
+    startNode = (startNode === undefined ? node1 : startNode);
+    var str = "";
+    while (startNode !== null) {
+        str += startNode.val.toString() + (startNode.next === null ? '' : " -> ");
+        startNode = startNode.next;
+    }
+    console.log(str);
+};
+show();
+deleteNode(node2);
+show();

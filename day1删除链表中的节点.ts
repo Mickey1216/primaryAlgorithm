@@ -15,7 +15,7 @@
  */
 
 
-//Definition for singly-linked list.
+//节点
 class ListNode {
     val: number
     next: ListNode | null
@@ -25,7 +25,34 @@ class ListNode {
     }
 }
 
-//Do not return anything, modify it in-place instead.
+//删除给定节点
 function deleteNode(root: ListNode | null): void {
+    root.val = root.next.val
+    root.next = root.next.next
+}
 
-};
+//测试
+let node4 = new ListNode(4, null)
+let node3 = new ListNode(3, node4)
+let node2 = new ListNode(2, node3)
+let node1 = new ListNode(1, node2)
+
+let show = (startNode?: ListNode) => {
+    startNode = (startNode === undefined ? node1 : startNode)
+
+    let str:string = ""
+    while(startNode !== null){
+        str += startNode.val.toString() + (startNode.next === null ? '' : " -> ")
+        startNode = startNode.next
+    }
+
+    console.log(str);
+}
+
+show()
+deleteNode(node2)
+show()
+
+
+
+
