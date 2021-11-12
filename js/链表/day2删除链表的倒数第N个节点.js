@@ -14,22 +14,21 @@
 输入：head = [1,2], n = 1
 输出：[1]
  */
-var ListNode = /** @class */ (function () {
-    function ListNode(val, next) {
+class ListNode {
+    constructor(val, next) {
         this.val = (val === undefined ? 0 : val);
         this.next = (next === undefined ? null : next);
     }
-    return ListNode;
-}());
+}
 function removeNthFromEnd(head, n) {
-    var pre = head;
-    var last = len(head) - n;
+    let pre = head;
+    let last = len(head) - n;
     //如果last等于0表示删除的是头结点
     if (last === 0) {
         return head.next;
     }
     //这里首先要找到要删除链表的前一个结点
-    for (var i = 0; i < last - 1; i++) {
+    for (let i = 0; i < last - 1; i++) {
         pre = pre.next;
     }
     //然后让前一个结点的next指向要删除节点的next
@@ -38,7 +37,7 @@ function removeNthFromEnd(head, n) {
 }
 //求链表的长度
 function len(head) {
-    var len = 0;
+    let len = 0;
     while (head !== null) {
         len++;
         head = head.next;

@@ -15,8 +15,8 @@ nums 已按升序排列
  */
 //方法1
 function removeDuplicates(nums) {
-    for (var i = 0; i < nums.length; i++) {
-        for (var j = i + 1; j < nums.length; j++) {
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
             if (nums[i] === nums[j]) {
                 nums.splice(j, 1);
                 j--;
@@ -34,8 +34,8 @@ function _removeDuplicates(nums) {
     if (nums.length < 2) {
         return nums.length;
     }
-    var left = 0;
-    var right = 1;
+    let left = 0;
+    let right = 1;
     while (right < nums.length) {
         if (nums[left] == nums[right])
             right++;
