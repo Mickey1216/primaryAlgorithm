@@ -12,5 +12,19 @@
  */
 
 function isAnagram(s: string, t: string): boolean {
+    let sArr = s.split('')
+    sArr.sort()
+    s = sArr.join('')
 
+    let tArr = t.split('')
+    tArr.sort()
+    t = tArr.join('')
+
+    if(s === t){
+        return true
+    }else{
+        return false
+    }    
 }
+
+console.log(isAnagram("aaae","aaat"))

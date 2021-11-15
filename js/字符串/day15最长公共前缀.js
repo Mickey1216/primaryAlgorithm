@@ -13,4 +13,17 @@
 解释：输入不存在公共前缀。
  */
 function longestCommonPrefix(strs) {
+    /**
+    利用数组的 Reduce 方法实现的最简洁代码
+        取第一个字符串为公共前缀
+        逐个对比，返回两两元素的公共前缀
+        将 2 中的公共前缀和下一个元素对比，得到新的公共前缀
+     */
+    return strs.reduce((prev, cur) => {
+        while (cur.indexOf(prev) !== 0) {
+            prev = prev.slice(0, prev.length - 1);
+        }
+        return prev;
+    });
 }
+console.log(longestCommonPrefix(["flower", "flow", "flight"]));

@@ -14,5 +14,23 @@
  */
 
 function isPalindrome(s: string): boolean {
+    //空字符串
+    if(s.length === 0) return true
 
+    //转为小写字母,去掉空格和非英文字母
+    s = s.toLocaleLowerCase()
+    s = s.replace(/[^a-zA-Z0-9]/g,'')
+    s = s.replace(/\s/g,'')
+    console.log(s);
+    
+    let revArr = s.split('').reverse()
+    let s_rev = revArr.join('')
+
+    if(s === s_rev){
+        return true
+    }else{
+        return false
+    }
 }
+
+console.log(isPalindrome("A man, a plan, a canal: Panama@!953-_=++"))
