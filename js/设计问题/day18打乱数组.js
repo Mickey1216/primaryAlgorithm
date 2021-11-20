@@ -21,15 +21,32 @@ solution.shuffle();    // 随机返回数组 [1, 2, 3] 打乱后的结果。例�
  */
 class Solution {
     constructor(nums) {
+        this.nums = [];
+        this.nums = nums;
     }
     reset() {
+        return this.nums;
     }
     shuffle() {
+        //JSON.parse(JSON.stringify(obj))--我们一般用来深拷贝
+        let numbers = JSON.parse(JSON.stringify(this.nums));
+        for (let i = 1; i < numbers.length; i++) {
+            //生成随机数
+            let index = Math.floor(Math.random() * (i + 1));
+            this.swap(numbers, i, index);
+        }
+        return numbers;
+    }
+    //交换数组中的两个数
+    swap(nums, i, j) {
+        let temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }
-/**
- * Your Solution object will be instantiated and called as such:
- * var obj = new Solution(nums)
- * var param_1 = obj.reset()
- * var param_2 = obj.shuffle()
- */ 
+//测试
+let nums = [1, 2, 3];
+let obj = new Solution(nums);
+let param_1 = obj.reset();
+let param_2 = obj.shuffle();
+console.log(obj, param_1, param_2);

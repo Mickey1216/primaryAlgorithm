@@ -26,4 +26,13 @@ nums2 的长度为 n 。
 注意，因为 m = 0 ，所以 nums1 中没有元素。nums1 中仅存的 0 仅仅是为了确保合并结果可以顺利存放到 nums1 中。
  */
 function merge(nums1, m, nums2, n) {
+    for (; m < m + n; m++) {
+        nums1[m] = nums2[--n];
+    }
+    //排序-升序
+    nums1.sort((a, b) => a - b);
+    console.log(nums1);
 }
+merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3);
+merge([1], 1, [], 0);
+merge([0], 0, [1], 1);

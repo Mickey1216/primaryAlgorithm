@@ -26,5 +26,16 @@ nums2 的长度为 n 。
  */
 
 function merge(nums1: number[], m: number, nums2: number[], n: number): void {
+    for (; m < m + n; m++) {
+        nums1[m] = nums2[--n]
+    }
+    //排序-升序
+    nums1.sort((a, b) => a - b)
 
+    console.log(nums1)
 }
+
+merge([1,2,3,0,0,0],3,[2,5,6],3)
+merge([1],1,[],0)
+merge([0],0,[1],1)
+

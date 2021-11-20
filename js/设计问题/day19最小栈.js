@@ -24,21 +24,47 @@ minStack.getMin();   --> 返回 -2.
  */
 class MinStack {
     constructor() {
+        this.stack = [];
+        this.min = null;
     }
     push(val) {
+        if (this.stack.length == 0) {
+            this.stack.push(0);
+            this.min = val;
+        }
+        else {
+            this.stack.push(val - this.min);
+            if (val < this.min)
+                this.min = val;
+        }
     }
     pop() {
+        if (this.stack.length === 0) {
+            return;
+        }
+        let t = this.stack.pop();
+        if (t < 0)
+            this.min -= t;
     }
     top() {
+        let t = this.stack[this.stack.length - 1];
+        if (t >= 0) {
+            return this.stack[this.stack.length - 1] + this.min;
+        }
+        else {
+            return this.min;
+        }
     }
     getMin() {
+        return this.min;
     }
 }
-/**
- * Your MinStack object will be instantiated and called as such:
- * var obj = new MinStack()
- * obj.push(val)
- * obj.pop()
- * var param_3 = obj.top()
- * var param_4 = obj.getMin()
- */ 
+//测试
+let s = new MinStack();
+s.push(-2);
+s.push(0);
+s.push(-3);
+console.log(s.getMin());
+s.pop();
+console.log(s.top());
+console.log(s.getMin());
