@@ -16,9 +16,9 @@
 示例 2：
     5
    / \
-  1  4
+  1   4
     /  \
-   3   6
+   3    6
 输入：root = [5,1,4,null,null,3,6]
 输出：false
 解释：根节点的值是 5 ，但是右子节点的值是 4 。
@@ -31,4 +31,28 @@ class TreeNode {
     }
 }
 function isValidBST(root) {
+    ////方法1--递归
+    // if(root === null)
+    //     return true
+    // if(root.left !== null && root.val <= root.left.val || root.right !== null && root.val >= root.right.val)
+    //     return false
+    // return isValidBST(root.left) && isValidBST(root.right)
+    //方法2--中序遍历（递归）
+    let res = true;
+    let arr = [];
+    const inorder = root => {
+        if (!root)
+            return;
+        inorder(root.left);
+        arr.push(root.val);
+        inorder(root.right);
+    };
+    inorder(root);
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] >= arr[i + 1]) {
+            res = false;
+            break;
+        }
+    }
+    return res;
 }

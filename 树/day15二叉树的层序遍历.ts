@@ -27,6 +27,34 @@ class TreeNode {
     }
 }
 
+//层序遍历就是按二叉树从上到下，从左到右依次打印每个节点中存储的数据
 function levelOrder(root: TreeNode | null): number[][] {
+  //BFS
+  if(root === null)
+    return new Array()
+  
+  let queue = new Array()
+  let res = new Array()
+  queue.push(root)
+  
+  while(queue.length){
+    let item = new Array()
+    let len = queue.length
 
+    for(let i=0;i<len;i++){
+      //获取第一个元素
+      let node = queue.shift()
+      item.push(node.val)
+
+      if(node.left !== null){
+        queue.push(node.left)
+      }
+      if(node.right !== null){
+        queue.push(node.right)
+      }
+    }
+    res.push(item)
+  }
+
+  return res
 }

@@ -21,4 +21,11 @@ class TreeNode {
     }
 }
 function maxDepth(root) {
+    //方法1--递归
+    return root === null ? 0 : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    // //方法2--BFS：一层层遍历，统计一下总共有多少层
+    // if(root === null)
+    //     return 0
 }
+let tree = new TreeNode(3);
+console.log(maxDepth(tree));
