@@ -24,4 +24,15 @@
 输出：-100000
  */
 function maxSubArray(nums) {
+    let len = nums.length;
+    let cur = nums[0];
+    let max = cur;
+    for (let i = 1; i < len; i++) {
+        cur = Math.max(cur, 0) + nums[i];
+        //记录最大值
+        max = Math.max(max, cur);
+    }
+    return max;
 }
+console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+console.log(maxSubArray([-2]));

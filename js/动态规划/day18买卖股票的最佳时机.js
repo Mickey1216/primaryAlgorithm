@@ -17,4 +17,18 @@
 解释：在这种情况下, 没有交易完成, 所以最大利润为 0。
  */
 function maxProfit(prices) {
+    if (!prices.length)
+        return 0;
+    let len = prices.length;
+    let hold = -prices[0]; //持有股票
+    let noHold = 0; //不持有股票
+    for (let i = 1; i < len; i++) {
+        //递推公式
+        noHold = Math.max(noHold, hold + prices[i]);
+        hold = Math.max(hold, -prices[i]);
+    }
+    //最后肯定是手里没持有股票利润才会最大，也就是卖出去了
+    return noHold;
 }
+console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+console.log(maxProfit([7, 6, 4, 3, 1]));
