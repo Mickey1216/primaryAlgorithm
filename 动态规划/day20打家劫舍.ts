@@ -17,8 +17,20 @@
      偷窃到的最高金额 = 2 + 9 + 1 = 12 。
  */
 
-function rob(nums: number[]): number {
 
+//递推公式得出为dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
+function rob(nums: number[]): number {
+    if(nums.length < 3){
+        return Math.max(nums[0] || 0,nums[1] || 0);
+    }
+
+    let pre1 = nums[0], pre2 = Math.max(nums[0],nums[1]), max = 0;
+    for(let i=2;i<nums.length;i++){
+        max = Math.max(pre1 + nums[i], pre2);
+        [pre1, pre2] = [pre2, max];
+    }
+
+    return max;
 }
 
 console.log(rob([1,2,3,1]))
